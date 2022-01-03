@@ -1,10 +1,10 @@
-import auth.ServiceCredentials;
-import client.LanguageCloudClientProvider;
-import com.sdl.lt.lc.publicapi.sdk.api.GroupApi;
-import com.sdl.lt.lc.publicapi.sdk.api.UserApi;
-import com.sdl.lt.lc.publicapi.sdk.model.ListGroupsResponse;
-import com.sdl.lt.lc.publicapi.sdk.model.ListUsersResponse;
-import context.LCContext;
+import com.rws.lt.lc.publicapi.sdk.api.GroupApi;
+import com.rws.lt.lc.publicapi.sdk.api.UserApi;
+import com.rws.lt.lc.publicapi.sdk.auth.ServiceCredentials;
+import com.rws.lt.lc.publicapi.sdk.client.LanguageCloudClientProvider;
+import com.rws.lt.lc.publicapi.sdk.context.LCContext;
+import com.rws.lt.lc.publicapi.sdk.model.ListGroupsResponse;
+import com.rws.lt.lc.publicapi.sdk.model.ListUsersResponse;
 
 import java.util.HashMap;
 
