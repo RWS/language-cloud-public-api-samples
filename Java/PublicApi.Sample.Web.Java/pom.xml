@@ -22,13 +22,9 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.sdl.lt.lc.public.api</groupId>
+            <groupId>com.rws.lt.lc.public-api</groupId>
             <artifactId>lc-public-api-sdk</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <!-- to be removed when java sdk merged-->
-            <scope>system</scope>
-            <systemPath>${basedir}/libs/lc-public-api-sdk-1.0-SNAPSHOT.jar</systemPath>
-            <!---->
+            <version>21.12.79.0_4bf384b</version>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>

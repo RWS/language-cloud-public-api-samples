@@ -1,9 +1,9 @@
 package com.controller;
 
 import com.model.User;
-import com.sdl.lt.lc.publicapi.sdk.api.GroupApi;
-import com.sdl.lt.lc.publicapi.sdk.model.Group;
-import com.sdl.lt.lc.publicapi.sdk.model.ListGroupsResponse;
+import com.rws.lt.lc.publicapi.sdk.api.GroupApi;
+import com.rws.lt.lc.publicapi.sdk.model.Group;
+import com.rws.lt.lc.publicapi.sdk.model.ListGroupsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
