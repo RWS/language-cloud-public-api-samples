@@ -1,9 +1,9 @@
 package com.controller;
 
-import exception.ApiErrorResponse;
-import exception.ApiForbiddenException;
-import exception.ApiUnauthorizedException;
-import exception.ErrorCode;
+import com.rws.lt.lc.publicapi.sdk.exception.ApiErrorResponse;
+import com.rws.lt.lc.publicapi.sdk.exception.ApiForbiddenException;
+import com.rws.lt.lc.publicapi.sdk.exception.ApiUnauthorizedException;
+import com.rws.lt.lc.publicapi.sdk.exception.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

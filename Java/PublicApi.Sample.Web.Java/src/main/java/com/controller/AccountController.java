@@ -1,9 +1,9 @@
 package com.controller;
 
 import com.model.User;
-import com.sdl.lt.lc.publicapi.sdk.api.AccountApi;
-import com.sdl.lt.lc.publicapi.sdk.model.Account;
-import com.sdl.lt.lc.publicapi.sdk.model.ListMyAccountsResponse;
+import com.rws.lt.lc.publicapi.sdk.api.AccountApi;
+import com.rws.lt.lc.publicapi.sdk.model.Account;
+import com.rws.lt.lc.publicapi.sdk.model.ListMyAccountsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

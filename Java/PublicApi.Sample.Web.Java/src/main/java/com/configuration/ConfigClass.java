@@ -1,9 +1,9 @@
 package com.configuration;
 
-import auth.AuthenticationService;
-import client.LanguageCloudClientProvider;
 import com.authentication.CustomAuthenticationHandler;
-import com.sdl.lt.lc.publicapi.sdk.api.*;
+import com.rws.lt.lc.publicapi.sdk.api.*;
+import com.rws.lt.lc.publicapi.sdk.auth.AuthenticationService;
+import com.rws.lt.lc.publicapi.sdk.client.LanguageCloudClientProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -71,7 +71,7 @@ public class ConfigClass {
     }
 
     @Bean
-    public QuotesApi getQuotesApi(LanguageCloudClientProvider languageCloudClientProvider) {
+    public QuoteApi getQuotesApi(LanguageCloudClientProvider languageCloudClientProvider) {
         return languageCloudClientProvider.getQuotesClient();
     }
 

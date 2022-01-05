@@ -1,8 +1,0 @@
-com\configuration\ConfigClass.class
-com\controller\ControllerExceptionHandler.class
-com\model\User.class
-com\application\MainApplication.class
-com\authentication\CustomAuthenticationHandler.class
-com\controller\AccountController.class
-com\repository\Repository.class
-com\controller\GroupController.class

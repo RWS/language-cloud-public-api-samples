@@ -1,6 +1,6 @@
 package com.repository;
 
-import auth.ServiceCredentials;
+import com.rws.lt.lc.publicapi.sdk.auth.ServiceCredentials;
 
 public class Repository {
     public ServiceCredentials getServiceCredentialsById(int accountId) {

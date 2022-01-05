@@ -1,10 +1,10 @@
 package com.authentication;
 
-import auth.AuthenticationService;
-import auth.CustomServiceAuthenticationHandler;
-import auth.ServiceCredentials;
 import com.model.User;
 import com.repository.Repository;
+import com.rws.lt.lc.publicapi.sdk.auth.AuthenticationService;
+import com.rws.lt.lc.publicapi.sdk.auth.CustomServiceAuthenticationHandler;
+import com.rws.lt.lc.publicapi.sdk.auth.ServiceCredentials;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
