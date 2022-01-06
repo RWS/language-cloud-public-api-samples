@@ -29,9 +29,9 @@ namespace Rws.LanguageCloud.Sdk.WebApiSample.Controllers
             });
 
             // make an API call using a client and the user identity from HttpContext
-            var repsonse = await accountClient.ListMyAccountsAsync();
+            var response = await accountClient.ListMyAccountsAsync();
 
-            return Ok(repsonse);
+            return Ok(response);
         }
     }
 }

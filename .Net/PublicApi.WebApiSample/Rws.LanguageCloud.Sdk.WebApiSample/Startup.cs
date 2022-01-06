@@ -27,7 +27,7 @@ namespace Rws.LanguageCloud.Sdk.WebApiSample
 
             // register a client
             services.AddSingleton(provider =>
-                LanguageCloudClientProvider.GetAccountClient(provider.GetService<LcHandler>()));
+                LanguageCloudClientProvider.GetAccountClientNoAuth(provider.GetService<LcHandler>()));
 
             services.AddHttpContextAccessor();
         }
