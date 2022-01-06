@@ -12,7 +12,7 @@ namespace Rws.LanguageCloud.Sdk.ConsoleSample
 
             WithContextScoping().GetAwaiter().GetResult();
 
-            WithFactory().GetAwaiter().GetResult();
+            WithHandlers().GetAwaiter().GetResult();
 
             Console.ReadLine();
         }
@@ -58,16 +58,16 @@ namespace Rws.LanguageCloud.Sdk.ConsoleSample
             }
         }
 
-        private static async System.Threading.Tasks.Task WithFactory()
+        private static async System.Threading.Tasks.Task WithHandlers()
         {
             // define credentials
             ServiceCredentials credentials = new ServiceCredentials("client-id", "client-secret", "tenant");
 
+            // get an authentication handler
+            ServiceAuthenticationHandler handler = new ServiceAuthenticationHandler(credentials);
+
             // use the factory method
-            var client = new Sdl.ApiClientSdk.Core.ApiClientFactory<AccountClient>("https://lc-api.sdl.com")
-               .AddHandler(new ServiceAuthenticationHandler(credentials))
-               .AddJsonSerializerSettings(LanguageCloudClientProvider.GetJsonSettings())
-               .Build();
+            var client = LanguageCloudClientProvider.GetAccountClientNoAuth(handler);
 
             // use the client
             var accounts = await client.ListMyAccountsAsync();
