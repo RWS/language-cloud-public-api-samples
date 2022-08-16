@@ -9,13 +9,13 @@ import com.rws.lt.lc.publicapi.sdk.model.ListUsersResponse;
 import java.util.HashMap;
 
 public class Test {
-    private final static String CLIENT_ID_1 = "e3Pc4BC8VXOK6ahywsgIAzrAF9RdypAr";
-    private final static String CLIENT_SECRET_1 = "l51KX6tp-sTENAIDOOPQtEdb-22psD25F2a2snsf0i_3SRuHaWZ4qb4gQ9DMEPtN";
-    private final static String TENANT_VALUE_1 = "LC-60267fce0f0090246204e338";
+    private final static String CLIENT_ID_1 = "CLIENT_ID_1";
+    private final static String CLIENT_SECRET_1 = "CLIENT_SECRET_1";
+    private final static String TENANT_VALUE_1 = "TENANT_VALUE_1";
 
-    private final static String CLIENT_ID_2 = "4KkPLyLudK5MHeDhJc5SXTmKiouBmZTn";
-    private final static String CLIENT_SECRET_2 = "QNFjzL3S2EsCxjbCEQpDbOjOHDF6mkwXIdCPWsJYqiXQAMPvdK62JnQ0nIRp2Y1v";
-    private final static String TENANT_VALUE_2 = "LC-60b8b25de186261a8f6c780a";
+    private final static String CLIENT_ID_2 = "CLIENT_ID_2";
+    private final static String CLIENT_SECRET_2 = "CLIENT_SECRET_2";
+    private final static String TENANT_VALUE_2 = "TENANT_VALUE_2";
 
     public static void main(String[] args) {
         //instantiate the credentials
