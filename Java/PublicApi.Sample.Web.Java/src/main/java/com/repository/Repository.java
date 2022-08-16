@@ -10,7 +10,7 @@ public class Repository {
             case 2:
                 return new ServiceCredentials("client-id-2", "client-secret-2", "tenant-2");
             case 3:
-                return new ServiceCredentials("e3Pc4BC8VXOK6ahywsgIAzrAF9RdypAr", "l51KX6tp-sTENAIDOOPQtEdb-22psD25F2a2snsf0i_3SRuHaWZ4qb4gQ9DMEPtN", "LC-60267fce0f0090246204e338");
+                return new ServiceCredentials("client-id-3", "client-secret-3", "tenant-3");
             default:
                 return new ServiceCredentials();
         }
