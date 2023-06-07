@@ -61,7 +61,7 @@ public class Test {
 
         // create a context scope and use the client
         try (LCContext lcContext = LCContext.beginScope(credentials_2, "trace-id-2");) {
-            ListUsersResponse usersResponse = userApi.listUsers(new HashMap<>());
+            ListUsersResponse usersResponse = userApi.listUsers(new UserApi.ListUsersQueryParams());
             System.out.println("Users:");
             System.out.println(usersResponse.getItems());
         } catch (Exception e) {
