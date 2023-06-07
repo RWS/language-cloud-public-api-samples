@@ -15,6 +15,7 @@
     <properties>
         <spring.boot.version>1.5.17.RELEASE</spring.boot.version>
         <feign-version>11.0</feign-version>
+        <jackson-databind-version>2.10.3</jackson-databind-version>
     </properties>
     <dependencies>
         <dependency>
@@ -24,7 +25,7 @@
         <dependency>
             <groupId>com.rws.lt.lc.public-api</groupId>
             <artifactId>lc-public-api-sdk</artifactId>
-            <version>21.12.79.0_4bf384b</version>
+            <version>1.0.19-beta</version>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>
@@ -42,7 +43,11 @@
             <version>4.2.3.RELEASE</version>
         </dependency>
         <!-- Thanks for using https://jar-download.com -->
-
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind-version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

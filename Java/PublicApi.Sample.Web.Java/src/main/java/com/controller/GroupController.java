@@ -30,7 +30,7 @@ public class GroupController {
         SecurityContext sc = SecurityContextHolder.getContext();
         sc.setAuthentication(authentication);
 
-        ListGroupsResponse groupsResponse = groupApi.listGroups(new HashMap<String, Object>());
+        ListGroupsResponse groupsResponse = groupApi.listGroups(new GroupApi.ListGroupsQueryParams());
         return groupsResponse.getItems();
     }
 }
