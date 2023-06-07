@@ -28,12 +28,12 @@ public class Test {
         GroupApi groupApi = languageCloudClientProvider_clientIdClientSecret.getGroupClient();
 
         // use the client
-        ListGroupsResponse groupsResponse = groupApi.listGroups(new HashMap<>());
+        ListGroupsResponse groupsResponse = groupApi.listGroups(new GroupApi.ListGroupsQueryParams());
         System.out.println("Groups:");
         System.out.println(groupsResponse.getItems());
 
         //Second call to check the token is retrieved from cache
-        ListGroupsResponse groupsResponse2 = groupApi.listGroups(new HashMap<>());
+        ListGroupsResponse groupsResponse2 = groupApi.listGroups(new GroupApi.ListGroupsQueryParams());
         System.out.println("Groups:");
         System.out.println(groupsResponse2.getItems());
 
@@ -52,7 +52,7 @@ public class Test {
 
         // create a context scope and use the client
         try (LCContext lcContext = LCContext.beginScope(credentials_1, "trace-id-1");) {
-            ListUsersResponse usersResponse = userApi.listUsers(new HashMap<>());
+            ListUsersResponse usersResponse = userApi.listUsers(new UserApi.ListUsersQueryParams());
             System.out.println("Users:");
             System.out.println(usersResponse.getItems());
         } catch (Exception e) {
