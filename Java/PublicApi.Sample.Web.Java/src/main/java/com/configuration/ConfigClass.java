@@ -7,17 +7,14 @@ import com.rws.lt.lc.publicapi.sdk.client.LanguageCloudClientProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.List;
+
 @Configuration
 public class ConfigClass {
 
-    private static final String GRANT_TYPE = "client_credentials";
-    private final String AUDIENCE = "https://api.sdl.com";
-    private final String AUTH0_URL = "https://sdl-prod.eu.auth0.com/oauth/token";
-    private final String BASE_URL = "https://lc-api.sdl.com/public-api/v1";
-
     @Bean
     public LanguageCloudClientProvider getPublicApiClient(CustomAuthenticationHandler customAuthenticationHandler) {
-        return new LanguageCloudClientProvider(customAuthenticationHandler, BASE_URL);
+        return LanguageCloudClientProvider.builder().withRegionCode("eu").withRequestInterceptors(List.of(customAuthenticationHandler)).build();
     }
 
     @Bean
@@ -117,7 +114,7 @@ public class ConfigClass {
 
     @Bean
     public AuthenticationService getAuthenticationService() {
-        return new AuthenticationService(GRANT_TYPE, AUDIENCE, AUTH0_URL);
+        return AuthenticationService.getInstance();
     }
 
 }

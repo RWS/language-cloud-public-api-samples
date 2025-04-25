@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.rws.lt.lc.public-api</groupId>
             <artifactId>lc-public-api-sdk</artifactId>
-            <version>21.12.79.0_4bf384b</version>
+            <version>24.0.8</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
