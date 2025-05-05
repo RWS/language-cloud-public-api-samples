@@ -14,7 +14,11 @@ public class ConfigClass {
 
     @Bean
     public LanguageCloudClientProvider getPublicApiClient(CustomAuthenticationHandler customAuthenticationHandler) {
-        return LanguageCloudClientProvider.builder().withRegionCode("eu").withRequestInterceptors(List.of(customAuthenticationHandler)).build();
+        return LanguageCloudClientProvider
+                .builder()
+                .withRegionCode("eu")
+                .withRequestInterceptors(List.of(customAuthenticationHandler))
+                .build();
     }
 
     @Bean
