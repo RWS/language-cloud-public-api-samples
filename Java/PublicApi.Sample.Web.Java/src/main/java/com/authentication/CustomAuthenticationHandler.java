@@ -21,14 +21,28 @@ public class CustomAuthenticationHandler extends CustomServiceAuthenticationHand
 
     @Override
     public ServiceCredentials getServiceCredentials() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = (User) authentication.getPrincipal();
+        return repository.getServiceCredentialsById(getCurrentUser().getUserId());
+    }
 
-        return repository.getServiceCredentialsById(user.getUserId());
+    /**
+     * serviceCredentials may be or may not be bounded to a tenant
+     */
+    @Override
+    public String getTenantId() {
+         return repository.getServiceCredentialsById(getCurrentUser().getUserId()).getTenantId();
+        // or
+//        return repository.getTenantForUserId(getCurrentUser().getUserId());
     }
 
     @Override
     public String getTraceId() {
         return UUID.randomUUID().toString();
     }
+
+    private User getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return (User) authentication.getPrincipal();
+    }
+
+
 }
