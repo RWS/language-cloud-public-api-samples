@@ -6,17 +6,12 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.17.RELEASE</version>
+        <version>3.5.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.example</groupId>
+    <groupId>com.rws.lt.lc.public-api</groupId>
     <artifactId>PublicApi.Sample.Web.Java</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <properties>
-        <spring.boot.version>1.5.17.RELEASE</spring.boot.version>
-        <feign-version>11.0</feign-version>
-        <jackson-databind-version>2.10.3</jackson-databind-version>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -25,28 +20,12 @@
         <dependency>
             <groupId>com.rws.lt.lc.public-api</groupId>
             <artifactId>lc-public-api-sdk</artifactId>
-            <version>24.0.8</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-core</artifactId>
-            <version>${feign-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.10</version>
+            <version>25.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>4.2.3.RELEASE</version>
-        </dependency>
-        <!-- Thanks for using https://jar-download.com -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind-version}</version>
+            <version>6.5.1</version>
         </dependency>
     </dependencies>
     <build>
@@ -58,9 +37,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.0</version>
+                <!-- Spring Boot version 3.x.x now requires java 17 -->
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
         </plugins>

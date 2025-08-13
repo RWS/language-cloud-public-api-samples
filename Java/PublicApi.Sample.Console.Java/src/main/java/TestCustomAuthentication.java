@@ -4,10 +4,12 @@ import com.rws.lt.lc.publicapi.sdk.auth.CustomServiceAuthenticationHandler;
 import com.rws.lt.lc.publicapi.sdk.auth.ServiceCredentials;
 import com.rws.lt.lc.publicapi.sdk.client.LanguageCloudClientProvider;
 import com.rws.lt.lc.publicapi.sdk.model.ListProjectsResponse;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.UUID;
 
+@Slf4j
 public class TestCustomAuthentication {
     private final static String CLIENT_ID = "clientId1";
     private final static String CLIENT_SECRET = "clientSecret1";
@@ -42,8 +44,7 @@ public class TestCustomAuthentication {
 
         // use the client
         ListProjectsResponse projectsResponse = projectApi.listProjects(new ProjectApi.ListProjectsQueryParams());
-        System.out.println("Projects:");
-        System.out.println(projectsResponse.getItems());
+        log.info("Projects: {}", projectsResponse.getItems());
 
     }
 }
