@@ -21,6 +21,14 @@
             <groupId>com.rws.lt.lc.public-api</groupId>
             <artifactId>lc-public-api-sdk</artifactId>
             <version>25.0.0</version>
+            <exclusions>
+                <!-- example on how to exclude a loggingProvider if you have another in classpath-->
+                <!-- in this case we want to use logback from spring-boot-starter-logging -->
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-simple</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -37,8 +45,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.14.0</version>
-                <!-- Spring Boot version 3.x.x now requires java 17 -->
+                <!-- Spring Boot version 3.x.x requires java 17 -->
                 <configuration>
                     <source>17</source>
                     <target>17</target>
