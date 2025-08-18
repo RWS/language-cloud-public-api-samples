@@ -5,9 +5,11 @@ import com.rws.lt.lc.publicapi.sdk.context.ContextKeys;
 import com.rws.lt.lc.publicapi.sdk.context.LCContext;
 import com.rws.lt.lc.publicapi.sdk.model.ListUsersResponse;
 import com.rws.lt.lc.publicapi.sdk.model.User;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.stream.Collectors;
 
+@Slf4j
 public class TestMultiTenantApplications {
     private final static String CLIENT_ID_1 = "clientId1";
     private final static String CLIENT_SECRET_1 = "clientSecret1";
@@ -34,14 +36,14 @@ public class TestMultiTenantApplications {
 
         Runnable listUsersExecutable = () -> {
             ListUsersResponse usersResponse = userApi.listUsers(new UserApi.ListUsersQueryParams());
-            System.out.println(LCContext.getFromLCContext(ContextKeys.TRACE_ID_KEY) + " >> Users for tenant " + LCContext.getFromLCContext(ContextKeys.TENANT_ID_KEY) + " are:");
-            System.out.println(usersResponse.getItems().stream().map(User::getId).collect(Collectors.joining("\n")));
+            log.info(LCContext.getFromLCContext(ContextKeys.TRACE_ID_KEY) + " >> Users for tenant " + LCContext.getFromLCContext(ContextKeys.TENANT_ID_KEY) + " are:");
+            log.info(usersResponse.getItems().stream().map(User::getId).collect(Collectors.joining("\n")));
         };
 
         // create a context scope and execute inside with tenant 1
         LCContext.executeInScope(listUsersExecutable, serviceCredentials1, "trace-id-1");
 
-        System.out.println("--------------------------------------------------");
+        log.info("--------------------------------------------------");
         // create a context scope and execute inside with tenant 2
         LCContext.executeInScope(listUsersExecutable, serviceCredentials2, "trace-id-2");
     }
