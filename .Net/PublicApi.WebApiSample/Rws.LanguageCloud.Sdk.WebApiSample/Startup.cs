@@ -25,9 +25,8 @@ namespace Rws.LanguageCloud.Sdk.WebApiSample
             // handlers must always be transient
             services.AddTransient<LcHandler>();
 
-            // register a client
-            services.AddSingleton(provider =>
-                LanguageCloudClientProvider.GetAccountClientNoAuth(provider.GetService<LcHandler>()));
+            // Register the LanguageCloudClientFactory as a singleton. Resolve handlers from the provider when needed.
+            services.AddSingleton<LanguageCloudClientFactory>();
 
             services.AddHttpContextAccessor();
         }

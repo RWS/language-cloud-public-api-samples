@@ -8,12 +8,12 @@ namespace Rws.LanguageCloud.Sdk.WebApiSample.Controllers
     [Route("[controller]")]
     public class LanguageCloudApiSampleController : ControllerBase
     {
-        private readonly IAccountClient accountClient;
+        private readonly LanguageCloudClientFactory _factory;
 
-        // inject the client via constructor
-        public LanguageCloudApiSampleController(IAccountClient accountClient)
+        // inject the factory via constructor
+        public LanguageCloudApiSampleController(LanguageCloudClientFactory factory)
         {
-            this.accountClient = accountClient;
+            _factory = factory;
         }
 
         [HttpGet("{accountId}")]
@@ -28,7 +28,9 @@ namespace Rws.LanguageCloud.Sdk.WebApiSample.Controllers
                 })
             });
 
-            // make an API call using a client and the user identity from HttpContext
+            // make an API call using a client (resolved per-region) and the user identity from HttpContext
+           
+            var accountClient = _factory.Region("eu").AccountClient;
             var response = await accountClient.ListMyAccountsAsync();
 
             return Ok(response);

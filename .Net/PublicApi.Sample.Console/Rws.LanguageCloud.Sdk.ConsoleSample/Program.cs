@@ -1,4 +1,6 @@
-﻿using Rws.LanguageCloud.Sdk.Authentication;
+﻿using Rws.LanguageCloud.Sdk;
+using Rws.LanguageCloud.Sdk.Authentication;
+using Sdl.ApiClientSdk.Core;
 using System;
 using System.IO;
 using System.Linq;
@@ -23,8 +25,11 @@ namespace Rws.LanguageCloud.Sdk.ConsoleSample
             // define credentials
             ServiceCredentials credentials = new ServiceCredentials("client-id", "client-secret", "tenant");
 
+            // instantiate the provider for the region (e.g. "eu")
+            var clientProvider = new LanguageCloudClientProvider("eu");
+
             // Instantiate the client
-            var projectClient = LanguageCloudClientProvider.GetProjectClient(credentials);
+            var projectClient = clientProvider.GetProjectClient(credentials);
 
             // Creating a project:
             var projectCreateRequest = new ProjectCreateRequest
@@ -40,7 +45,7 @@ namespace Rws.LanguageCloud.Sdk.ConsoleSample
             var projectCreateResponse = await projectClient.CreateProjectAsync(projectCreateRequest);
 
             // Attach a source file to the project via the SourceFiles client:
-            var sourceFileClient = LanguageCloudClientProvider.GetSourceFileClient(credentials);
+            var sourceFileClient = clientProvider.GetSourceFileClient(credentials);
 
             using (FileStream SourceStream = File.Open("YOUR_TEXT_SOURCE_FILE", FileMode.Open))
             {
@@ -51,7 +56,7 @@ namespace Rws.LanguageCloud.Sdk.ConsoleSample
                     Name = "YOUR_TEXT_SOURCE_FILE",
                     Role = SourceFileRequestRole.Translatable,
                     Type = SourceFileRequestType.Native,
-                    Language = "en-US",
+                    Language = new LanguageRequest { LanguageCode = "en-US" } // Specify the language here
                 };
 
                 await sourceFileClient.AddSourceFileAsync("YOUR_PROJECT_ID", properties ,file);
@@ -76,10 +81,12 @@ namespace Rws.LanguageCloud.Sdk.ConsoleSample
             // define credentials for your second user
             ServiceCredentials credentials_2 = new ServiceCredentials("client-id-2", "client-secret-2", "tenant-2");
 
-            // instantiate the client without credentials
-            var client = LanguageCloudClientProvider.GetProjectClient();
+            // instantiate the provider and the client without credentials
+            var clientProvider = new LanguageCloudClientProvider("eu");
+            var client = clientProvider.GetProjectClient();
 
-            // create a context scope and use the client. You can also provide your own traceId
+            // create a context scope and use the client. For backwards compatibility this sample uses LCContext
+            // Note: newer apps should prefer tenantId + traceId scoping when supported by the SDK.
             using (Sdl.ApiClientSdk.Core.ApiClientContext.BeginScope(new LCContext(credentials_1, "trace-id-1")))
             {
                 // the client will use the credentials_1 and "trace-id-1" defined in the scope
@@ -87,7 +94,8 @@ namespace Rws.LanguageCloud.Sdk.ConsoleSample
                 LogToConsole(projectsResponse);
             }
 
-            // create a context scope and use the client. You can also provide your own traceId
+            // create a context scope and use the client. For backwards compatibility this sample uses LCContext
+            // Note: newer apps should prefer tenantId + traceId scoping when supported by the SDK.
             using (Sdl.ApiClientSdk.Core.ApiClientContext.BeginScope(new LCContext(credentials_2, "trace-id-2")))
             {
                 // the client will use the credentials_2 and "trace-id-2" defined in the scope
@@ -104,8 +112,11 @@ namespace Rws.LanguageCloud.Sdk.ConsoleSample
             // get an authentication handler
             ServiceAuthenticationHandler handler = new ServiceAuthenticationHandler(credentials);
 
+            // instantiate the provider and get a client with the custom handler (no implicit auth)
+            var clientProvider = new LanguageCloudClientProvider("eu");
+
             // use the factory method
-            var client = LanguageCloudClientProvider.GetProjectClientNoAuth(handler);
+            var client = clientProvider.GetProjectClientNoAuth(handler);
 
             // use the client
             var projectsResponse = await client.ListProjectsAsync();
